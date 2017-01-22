@@ -11,7 +11,6 @@ class Point{
 
 int main_menu,submenu_shape,submenu_primitive;
 Point circle_points[360];
-Point pivot;
 
 void createMenu(){
     int menu,shape_menu,mode_menu,primitive_menu;
@@ -19,10 +18,6 @@ void createMenu(){
 
 void init(){
 	float w,deg_to_rad,radius;
-
-	pivot.x = 0.0f;
-	pivot.y = 0.0f;
-	pivot.z = 0.0f;
 
 	w = 360/360;
 
@@ -57,7 +52,7 @@ void display(){
     glBegin(GL_LINE_STRIP);
     {
     	int w,count;
-    	w = 360/5;
+    	w = 360/360;
         count = 1;
 
     	glVertex3f(0,0,0);
