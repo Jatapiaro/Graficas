@@ -63,10 +63,6 @@ void display(){
     		x = circle_points[i].x;
     		y = circle_points[i].y;
     		z = circle_points[i].z;
-            /*if(count == 2){
-                count=0;
-                glVertex3f(pivot.x,pivot.y,pivot.z);
-            }*/
     		glVertex3f(x,y,z);
     	}
     }
