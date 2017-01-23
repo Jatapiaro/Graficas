@@ -21,7 +21,7 @@ void init(){
 
 	w = 360/360;
 
-	radius = 5.0f;
+	radius = 3.0f;
 
 	deg_to_rad = 0.0174533;
 
@@ -44,15 +44,15 @@ void init(){
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);       // Clear color and depth buffers.
     glLoadIdentity();                       // Reset 3D view matrix.
-    gluLookAt(0.0, 10.0, 10.0,  // Where the cam is                 // Where the camera is.
+    gluLookAt(0.0, 0.0, 10.0,  // Where the cam is                 // Where the camera is.
               0.0, 0.0, 0.0,  // Cam pivot                  // To where the camera points at.
-              0.0, 1.0, 0.0); // UP vector                  // "UP" vector.
+              10.0, 0.0, 0.0); // UP vector                  // "UP" vector.
     glPushMatrix();
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBegin(GL_LINE_STRIP);
     {
     	int w,count;
-    	w = 360/360;
+    	w = 360/5;
         count = 1;
 
     	glVertex3f(0,0,0);
