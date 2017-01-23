@@ -77,7 +77,7 @@ void display(){
     glBegin(GL_TRIANGLE_STRIP);
     {
         int w,count;
-        w = 360/8;
+        w = 360/7;
         count = 0;
         for(int i=0;i<=360;i+=(w)){
             float x,y,z,x2,y2,z2;
@@ -86,10 +86,15 @@ void display(){
             y = circle_points[i].y;
             z = circle_points[i].z;
 
+            if(i+w>360){
+                x2 = circle_points[0].x;
+                y2 = circle_points[0].y;
+                z2 = circle_points[0].z;
+            }else{
                 x2 = circle_points[i+w].x;
                 y2 = circle_points[i+w].y;
                 z2 = circle_points[i+w].z;
-            
+            }
 
             glVertex3f(x,y,0);
             glVertex3f(0,0,0);
