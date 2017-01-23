@@ -10,7 +10,7 @@ class Point{
 };
 
 int main_menu,submenu_shape,submenu_primitive;
-Point circle_points[360];
+Point circle_points[360],rectangle_points[4];
 
 void createMenu(){
     int menu,shape_menu,mode_menu,primitive_menu;
@@ -18,14 +18,14 @@ void createMenu(){
 
 void init(){
 	float w,deg_to_rad,radius;
-
 	w = 360/360;
 
 	radius = 3.0f;
 
 	deg_to_rad = 0.0174533;
 
-	for(int i =0; i <= 360; i ++){
+    int i=0;
+	for(i = 0; i < 360; i ++){
 		float angle;
 		Point p;
 		angle = deg_to_rad * (float)i;
@@ -34,6 +34,31 @@ void init(){
 		p.z = 0.0f;
 		circle_points[i] = p;
 	}
+    /*Point a,b,c,d;
+
+    a.x = 0;
+    a.y = -3;
+    a.z = 0;
+
+    rectangle_points[0] = a;
+
+    b.x = 1.5;
+    b.y = -3;
+    b.z = 0;
+
+    rectangle_points[1] = b;
+
+    c.x = 0;
+    c.y = 3;
+    c.z = 0;
+
+    rectangle_points[3] = c;
+
+    d.x = 1.5;
+    d.y = 3;
+    d.z = 0;
+
+    rectangle_points[2] = d;*/
 
 	glEnable(GL_DEPTH_TEST);     
 	glClearColor(0.0, 0.0, 0.0, 0.0); 
@@ -49,24 +74,30 @@ void display(){
               10.0, 0.0, 0.0); // UP vector                  // "UP" vector.
     glPushMatrix();
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glBegin(GL_LINE_STRIP);
+    glBegin(GL_TRIANGLE_STRIP);
     {
-    	int w,count;
-    	w = 360/5;
-        count = 1;
-
-    	glVertex3f(0,0,0);
-
-    	for(int i=0;i<=360;i+=w){
-    		float x,y,z;
+        int w,count;
+        w = 360/8;
+        count = 0;
+        for(int i=0;i<=360;i+=(w)){
+            float x,y,z,x2,y2,z2;
             count++;
-    		x = circle_points[i].x;
-    		y = circle_points[i].y;
-    		z = circle_points[i].z;
-    		glVertex3f(x,y,z);
-    	}
+            x = circle_points[i].x;
+            y = circle_points[i].y;
+            z = circle_points[i].z;
+
+                x2 = circle_points[i+w].x;
+                y2 = circle_points[i+w].y;
+                z2 = circle_points[i+w].z;
+            
+
+            glVertex3f(x,y,0);
+            glVertex3f(0,0,0);
+            glVertex3f(x2,y2,0);
+        }
     }
     glEnd();
+
 
     glPopMatrix();
     glutSwapBuffers();                        // Swap the hidden and visible buffers.
