@@ -33,11 +33,34 @@ void processMenu(int val){
         glutDestroyWindow(window);
         exit(0);
     }else if(val >= 1 && val <= 6){
+        
         if(val == 1){
             shape = 360;
         }else{
             shape = val;
         }
+
+        switch(shape){
+            case 1:
+                color = 301;
+                break;
+            case 2:
+                color = 302;
+                break;
+            case 3:
+                color = 303;
+                break;
+            case 4:
+                color = 304;
+                break;
+            case 5:
+                color = 305;
+                break;
+            default:
+                color = 306;
+                break;    
+        }
+
     }else if(val == 101 || val == 102){
         mode = val;
     }else if(val >= 201 && val <= 205){
@@ -53,7 +76,7 @@ void processMenu(int val){
         }else{
             step = 1;
         }
-    }else if(val >= 301 && val <=304){
+    }else if(val >= 301 && val <=306){
         color = val;
     }
 }
@@ -86,6 +109,8 @@ void createMenu(){
     glutAddMenuEntry("Red",302);
     glutAddMenuEntry("Blue",303);
     glutAddMenuEntry("Green",304);
+    glutAddMenuEntry("Purple",305);
+    glutAddMenuEntry("Yellow",306);
 
     menu = glutCreateMenu(processMenu);
     glutAddSubMenu("Shape", shape_menu);
@@ -108,6 +133,7 @@ void init(){
     mode = 101;
     primitive = 201;
     step = 1;
+    color = 303;
 
 	w = 360/360;
 
@@ -165,6 +191,12 @@ void display(){
         case 304:
             glColor3d(0.0, 1.0, 0.0);
             break;
+        case 305:
+            glColor3d(1.0, 0.0, 1.0);
+            break;
+        case 306:
+            glColor3d(1.0, 1.0, 0.0);
+            break;    
     }
 
     switch(primitive){
