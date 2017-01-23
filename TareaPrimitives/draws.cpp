@@ -41,9 +41,6 @@ void processMenu(int val){
         }
 
         switch(shape){
-            case 1:
-                color = 301;
-                break;
             case 2:
                 color = 302;
                 break;
@@ -56,8 +53,11 @@ void processMenu(int val){
             case 5:
                 color = 305;
                 break;
-            default:
+            case 6:
                 color = 306;
+                break;    
+            default:
+                color = 301;
                 break;    
         }
 
